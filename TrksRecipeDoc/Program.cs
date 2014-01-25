@@ -13,10 +13,6 @@ using LinqToWiki;
 using TrksRecipeDoc.MekaWiki;
 using TrksRecipeDoc.Properties;
 using TrksRecipeDoc.Recipes;
-using TrksRecipeDoc.WikiSpaces.Page;
-using TrksRecipeDoc.WikiSpaces.Session;
-using TrksRecipeDoc.WikiSpaces.Space;
-using TrksRecipeDoc.WikiSpaces.User;
 
 namespace TrksRecipeDoc
 {
@@ -101,7 +97,6 @@ namespace TrksRecipeDoc
             String login, password, wikispaceName;
             _promptForCredentials(out login, out password, out wikispaceName);
             var recipes = _readRecipes();
-            //_doStuffWikiSpaces(recipes, login, password, wikispaceName);
             _doMekaWikiStuff(recipes, login, password, wikispaceName);
             //Console.ReadKey();
         }
@@ -228,43 +223,6 @@ namespace TrksRecipeDoc
 
 
             wikiAccess.wiki.logout();
-        }
-
-
-        static void _doStuffWikiSpaces(RecipesProxy recipesRoot, String login, String password, String wikiSpaceName)
-        {
-            var sessionService = new WikiSpaces.Session.SessionService();
-            var spaceService = new WikiSpaces.Space.SpaceService();
-            var pageService = new WikiSpaces.Page.PageService();
-            var userService = new WikiSpaces.User.UserService();
-
-            String sessionId = sessionService.login(login, password);
-
-            SpaceStruct space = spaceService.getSpace(sessionId, wikiSpaceName);
-
-            /*PageStruct[] pages = pagePortClient.listPages(sessionId, space.id);
-            foreach (var page in pages)
-            {
-                Console.WriteLine(page.name);
-            }*/
-            MemberStruct[] memberStructs = spaceService.listMembers(sessionId, space.id);
-            PageStruct[] pageStructs = pageService.listPages(sessionId, space.id);
-            pageStructs[0].content += "_test_";
-            pageService.updatePage(sessionId, space.id, pageStructs[0]);
-            foreach (var item in recipesRoot.items)
-            {
-                PageStruct pageStruct = pageStructs.FirstOrDefault(p => p.name == item.name);
-                if (pageStruct == null)
-                {
-                    pageService.createPage(sessionId, space.id, item.name, item.description, "");
-                }
-                /*else
-                {
-                    pageStruct.content = item.description;
-                    pagePortClient.updatePage(sessionId, space.id, pageStruct);
-                }*/
-                break;
-            }
         }
     }
 }

@@ -11,23 +11,5 @@
     <Setting Name="WikiSpaceName" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="TrksRecipeDoc_WikiSpaces_Session_SessionService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://trksrecipedoc.wikispaces.com/site/api</Value>
-    </Setting>
-    <Setting Name="TrksRecipeDoc_WikiSpaces_User_UserService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://trksrecipedoc.wikispaces.com/user/api</Value>
-    </Setting>
-    <Setting Name="TrksRecipeDoc_WikiSpaces_Space_SpaceService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://trksrecipedoc.wikispaces.com/space/api</Value>
-    </Setting>
-    <Setting Name="TrksRecipeDoc_WikiSpaces_Page_PageService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://trksrecipedoc.wikispaces.com/page/api</Value>
-    </Setting>
-    <Setting Name="TrksRecipeDoc_WikiSpaces_Tag_TagService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://trksrecipedoc.wikispaces.com/tag/api</Value>
-    </Setting>
-    <Setting Name="TrksRecipeDoc_WikiSpaces_Message_MessageService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://trksrecipedoc.wikispaces.com/message/api</Value>
-    </Setting>
   </Settings>
 </SettingsFile>
