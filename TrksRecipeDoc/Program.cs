@@ -20,7 +20,7 @@ namespace TrksRecipeDoc
     {
         private const bool TRKS_DEBUG = true;
         private const bool TRKS_ADD_ICONS_B = false;
-        private const bool TRKS_ADD_HANDLERS_B = false;
+        private const bool TRKS_ADD_HANDLERS_B = true;
         private const bool TRKS_ADD_ITEM_PAGE_B = true;
         private const bool TRKS_ADD_MOD_TEMPLATES_B = true;
 
@@ -204,18 +204,18 @@ namespace TrksRecipeDoc
                     {
                         wikiAccess.handlerImageAdd(recipeHandler);
                     }
-                    //string text = ;
-                    String pageText = wikiAccess.page(recipeHandler.name);
+                    string title = recipeHandler.name + " (method)";
+                    String pageText = wikiAccess.page(title);
                     if (pageText == null)
                     {
-                        wikiAccess.savePage(recipeHandler.name, wikiAccess.itemTextGenerator.createNewHandlerPageText(recipeHandler), "create for recipes: " + recipeHandler.name);
+                        wikiAccess.savePage(title, wikiAccess.itemTextGenerator.createNewHandlerPageText(recipeHandler), "create for recipes: " + recipeHandler.name);
                     }
                     else
                     {
                         string newPageText = wikiAccess.itemTextGenerator.editHandlerPageText(pageText, recipeHandler);
                         if (pageText != newPageText)
                         {
-                            wikiAccess.editPage(recipeHandler.name, newPageText, "create for recipes: " + recipeHandler.name);
+                            wikiAccess.editPage(title, newPageText, "create for recipes: " + recipeHandler.name);
                         }
                     }
                 }

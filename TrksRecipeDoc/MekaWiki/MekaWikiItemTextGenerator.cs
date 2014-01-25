@@ -98,7 +98,7 @@ namespace TrksRecipeDoc.MekaWiki
             text += "}}";
             foreach (rootRecipeTypesRecipeType recipeType in _recipesProxy.recipeTypes.Where(p => p.machine != null && p.machine.Any(r => r.id == item.id && r.damage == item.damage)))
             {
-                text += String.Format("{0}CraftingMachine|{1}{2}", recipeType.name, "{{", "}}");
+                text += String.Format("{0}CraftingMachine|{1}{2}", "{{", recipeType.name, "}}");
             }
             text += String.Format("[[Category:{0}]]", "items" + "/" + (item.mod == "Minecraft" ? "vanilla" : item.mod) + "/" + item.category);
             text += "</protect>";
