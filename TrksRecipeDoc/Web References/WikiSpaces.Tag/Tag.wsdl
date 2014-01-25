@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:Tag" xmlns:ns5="http://www.wikispaces.com/tag/api" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="Tag" targetNamespace="urn:Tag" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.wikispaces.com/tag/api">
+      <xsd:complexType name="TagStruct">
+        <xsd:all>
+          <xsd:element name="id" type="xsd:int" />
+          <xsd:element name="name" type="xsd:string" />
+          <xsd:element name="page_id" type="xsd:int" />
+          <xsd:element name="date_created" type="xsd:int" />
+          <xsd:element name="user_created" type="xsd:int" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTags">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="ns5:TagStruct[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfStrings">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="listTagsForPageRequest">
+    <wsdl:part name="session" type="xsd:string" />
+    <wsdl:part name="pageId" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="listTagsForPageResponse">
+    <wsdl:part name="tagList" type="ns5:ArrayOfTags" />
+  </wsdl:message>
+  <wsdl:message name="createTagRequest">
+    <wsdl:part name="session" type="xsd:string" />
+    <wsdl:part name="pageId" type="xsd:int" />
+    <wsdl:part name="tag" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="createTagResponse">
+    <wsdl:part name="tagObj" type="ns5:TagStruct" />
+  </wsdl:message>
+  <wsdl:message name="deleteTagRequest">
+    <wsdl:part name="session" type="xsd:string" />
+    <wsdl:part name="pageId" type="xsd:int" />
+    <wsdl:part name="tag" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="deleteTagResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="updateTagsRequest">
+    <wsdl:part name="session" type="xsd:string" />
+    <wsdl:part name="pageId" type="xsd:int" />
+    <wsdl:part name="tags" type="ns5:ArrayOfStrings" />
+  </wsdl:message>
+  <wsdl:message name="updateTagsResponse">
+    <wsdl:part name="result" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="TagPort">
+    <wsdl:operation name="listTagsForPage">
+      <wsdl:input message="tns:listTagsForPageRequest" />
+      <wsdl:output message="tns:listTagsForPageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="createTag">
+      <wsdl:input message="tns:createTagRequest" />
+      <wsdl:output message="tns:createTagResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteTag">
+      <wsdl:input message="tns:deleteTagRequest" />
+      <wsdl:output message="tns:deleteTagResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateTags">
+      <wsdl:input message="tns:updateTagsRequest" />
+      <wsdl:output message="tns:updateTagsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TagBinding" type="tns:TagPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="listTagsForPage">
+      <soap:operation soapAction="urn:Tag#TagSOAPApi#listTagsForPage" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:Tag" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:Tag" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createTag">
+      <soap:operation soapAction="urn:Tag#TagSOAPApi#createTag" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:Tag" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:Tag" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTag">
+      <soap:operation soapAction="urn:Tag#TagSOAPApi#deleteTag" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:Tag" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:Tag" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTags">
+      <soap:operation soapAction="urn:Tag#TagSOAPApi#updateTags" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:Tag" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:Tag" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TagService">
+    <documentation />
+    <wsdl:port name="TagPort" binding="tns:TagBinding">
+      <soap:address location="http://www.wikispaces.com/tag/api" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

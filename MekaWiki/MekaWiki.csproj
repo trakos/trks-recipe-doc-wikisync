@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B5EA9C77-51FF-48E6-B729-0E6CC548E332}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MekaWiki</RootNamespace>
+    <AssemblyName>MekaWiki</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="allcategories.cs" />
+    <Compile Include="allfileusages.cs" />
+    <Compile Include="allimages.cs" />
+    <Compile Include="alllinks.cs" />
+    <Compile Include="allmessages.cs" />
+    <Compile Include="allpages.cs" />
+    <Compile Include="alltransclusions.cs" />
+    <Compile Include="allusers.cs" />
+    <Compile Include="backlinks.cs" />
+    <Compile Include="block.cs" />
+    <Compile Include="blocks.cs" />
+    <Compile Include="categories.cs" />
+    <Compile Include="categoryinfo.cs" />
+    <Compile Include="categorymembers.cs" />
+    <Compile Include="compare.cs" />
+    <Compile Include="delete.cs" />
+    <Compile Include="deletedrevs.cs" />
+    <Compile Include="duplicatefiles.cs" />
+    <Compile Include="edit.cs" />
+    <Compile Include="emailuser.cs" />
+    <Compile Include="embeddedin.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="expandtemplates.cs" />
+    <Compile Include="extlinks.cs" />
+    <Compile Include="exturlusage.cs" />
+    <Compile Include="filearchive.cs" />
+    <Compile Include="filerevert.cs" />
+    <Compile Include="imageinfo.cs" />
+    <Compile Include="images.cs" />
+    <Compile Include="imageusage.cs" />
+    <Compile Include="import.cs" />
+    <Compile Include="info.cs" />
+    <Compile Include="iwbacklinks.cs" />
+    <Compile Include="iwlinks.cs" />
+    <Compile Include="langbacklinks.cs" />
+    <Compile Include="langlinks.cs" />
+    <Compile Include="links.cs" />
+    <Compile Include="logevents.cs" />
+    <Compile Include="login.cs" />
+    <Compile Include="move.cs" />
+    <Compile Include="options.cs" />
+    <Compile Include="Page.cs" />
+    <Compile Include="PageResult.cs" />
+    <Compile Include="patrol.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="protect.cs" />
+    <Compile Include="protectedtitles.cs" />
+    <Compile Include="purge.cs" />
+    <Compile Include="QueryAction.cs" />
+    <Compile Include="querypage.cs" />
+    <Compile Include="random.cs" />
+    <Compile Include="recentchanges.cs" />
+    <Compile Include="revisions.cs" />
+    <Compile Include="rollback.cs" />
+    <Compile Include="search.cs" />
+    <Compile Include="setnotificationtimestamp.cs" />
+    <Compile Include="tags.cs" />
+    <Compile Include="templates.cs" />
+    <Compile Include="tokens.cs" />
+    <Compile Include="unblock.cs" />
+    <Compile Include="undelete.cs" />
+    <Compile Include="upload.cs" />
+    <Compile Include="usercontribs.cs" />
+    <Compile Include="userinfo.cs" />
+    <Compile Include="users.cs" />
+    <Compile Include="watch.cs" />
+    <Compile Include="watchlist.cs" />
+    <Compile Include="watchlistraw.cs" />
+    <Compile Include="Wiki.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LinqToWiki\LinqToWiki.Core\LinqToWiki.Core.csproj">
+      <Project>{98c63dd2-a2d0-4982-8c8b-ed5af8aa1edf}</Project>
+      <Name>LinqToWiki.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
