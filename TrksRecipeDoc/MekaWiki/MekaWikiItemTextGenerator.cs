@@ -95,6 +95,20 @@ namespace TrksRecipeDoc.MekaWiki
             {
                 text = item.attribute.Aggregate(text, (current, itemAttribute) => current + String.Format("|attr_{0} = {1}", itemAttribute.key, itemAttribute.value));
             }
+            if (item.rawCost != null)
+            {
+                for (int index = 0; index < item.rawCost.Length; index++)
+                {
+                    rootItemsItemRawCost rawCosts = item.rawCost[index];
+                    text += "|attr_Raw cost " + (index > 0 ? (index + 1).ToString(CultureInfo.InvariantCulture) : "") + "=";
+                    foreach (rootItemsItemRawCostRawCostItem rawCostItem in rawCosts.rawCostItem)
+                    {
+                        rootItemsItem costItem = _itemsById[rawCostItem.id][rawCostItem.damage];
+                        text += String.Format(CultureInfo.InvariantCulture, "{1} x {0}NavLink|{2}|{3}{4}<br />", "{{", float.Parse(rawCostItem.amount, CultureInfo.InvariantCulture),
+                            getItemIconName(costItem), costItem.name, "}}");
+                    }
+                }
+            }
             text += "}}";
             foreach (rootRecipeTypesRecipeType recipeType in _recipesProxy.recipeTypes.Where(p => p.machine != null && p.machine.Any(r => r.id == item.id && r.damage == item.damage)))
             {
